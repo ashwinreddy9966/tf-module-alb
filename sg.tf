@@ -48,6 +48,6 @@ resource "aws_security_group" "alb_private" {
   }
 
   tags = {
-    Name =  "roboshop-public-alb-${var.ENV}"
+    Name =  "roboshop-private-alb-${var.ENV}"
   }
 }
