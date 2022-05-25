@@ -5,7 +5,7 @@ resource "aws_security_group" "alb_public" {
   vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
 
   ingress {
-    description = "Allows MySQL Port"
+    description = "Allows http Port"
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
@@ -27,16 +27,16 @@ resource "aws_security_group" "alb_public" {
 
 # Private LB SG
 resource "aws_security_group" "alb_private" {
-  name        = "roboshop-mysql-${var.ENV}"
-  description = "roboshop-mysql-${var.ENV}"
+  name        = "roboshop-private-alb-${var.ENV}"
+  description = "roboshop-private-alb-${var.ENV}"
   vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
 
   ingress {
-    description = "Allows MySQL Port"
+    description = "Allows http Port"
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = [data.terraform_remote_state.vpc.outputs.VPC_CIDR, var.WORKSTATION_IP]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -48,6 +48,6 @@ resource "aws_security_group" "alb_private" {
   }
 
   tags = {
-    Name =  "roboshop-redis-sg-${var.ENV}"
+    Name =  "roboshop-public-alb-${var.ENV}"
   }
 }
