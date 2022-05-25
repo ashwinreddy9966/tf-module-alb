@@ -21,7 +21,7 @@ resource "aws_security_group" "alb_public" {
   }
 
   tags = {
-    Name =  "roboshop-redis-sg-${var.ENV}"
+    Name =  "roboshop-public-alb-${var.ENV}"
   }
 }
 
