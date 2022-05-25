@@ -3,7 +3,7 @@ resource "aws_lb" "alb" {
   internal           = var.INTERNAL
   load_balancer_type = "application"
   security_groups    =  var.INTERNAL ? [aws_security_group.alb_private.id] : [aws_security_group.alb_public.id]
-  subnets            = [???]
+  subnets            =  var.INTERNAL ? [aws_security_group.alb_private.id] : [aws_security_group.alb_public.id]
 
   enable_deletion_protection = true
 
