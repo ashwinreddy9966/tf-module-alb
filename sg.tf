@@ -33,8 +33,8 @@ resource "aws_security_group" "alb_private" {
 
   ingress {
     description = "Allows MySQL Port"
-    from_port   = var.RDS_MYSQL_PORT
-    to_port     = var.RDS_MYSQL_PORT
+    from_port   = 80
+    to_port     = 80
     protocol    = "tcp"
     cidr_blocks = [data.terraform_remote_state.vpc.outputs.VPC_CIDR, var.WORKSTATION_IP]
   }
