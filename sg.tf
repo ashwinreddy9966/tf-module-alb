@@ -1,5 +1,6 @@
 # Public LB SG
 resource "aws_security_group" "alb_public" {
+  count       = var.INTERNAL ? 
   name        = "roboshop-public-alb-${var.ENV}"
   description = "roboshop-public-lb-${var.ENV}"
   vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
