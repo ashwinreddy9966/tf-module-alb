@@ -1,4 +1,4 @@
-resource "aws_lb_listener" "front_end" {
+resource "aws_lb_listener" "private" {
   count             = var.INTERNAL ? 1 : 0
   load_balancer_arn = aws_lb.alb.arn
   port              = "80"
