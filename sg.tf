@@ -1,7 +1,7 @@
 # Public LB SG
 resource "aws_security_group" "alb_public" {
   name        = "roboshop-public-alb-${var.ENV}"
-  description = "roboshop-public-alb-${var.ENV}"
+  description = "roboshop-public-lb-${var.ENV}"
   vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
 
   ingress {
@@ -21,14 +21,14 @@ resource "aws_security_group" "alb_public" {
   }
 
   tags = {
-    Name =  "roboshop-public-alb-${var.ENV}"
+    Name =  "roboshop-public-App-LB-${var.ENV}"
   }
 }
 
 # Private LB SG
 resource "aws_security_group" "alb_private" {
   name        = "roboshop-private-alb-${var.ENV}"
-  description = "roboshop-private-alb-${var.ENV}"
+  description = "roboshop-private-lb-${var.ENV}"
   vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
   ingress {
     description = "Allows http Port"
@@ -47,6 +47,6 @@ resource "aws_security_group" "alb_private" {
   }
 
   tags = {
-    Name =  "roboshop-private-alb-${var.ENV}"
+    Name =  "roboshop-private-App-LB-${var.ENV}"
   }
 }
