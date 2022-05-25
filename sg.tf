@@ -36,7 +36,7 @@ resource "aws_security_group" "alb_private" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = []
+    cidr_blocks = [data.terraform_remote_state.vpc.outputs.VPC_CIDR]
   }
 
   egress {
