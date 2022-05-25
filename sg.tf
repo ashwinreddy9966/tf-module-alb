@@ -2,7 +2,6 @@
 resource "aws_security_group" "alb_public" {
   name        = "roboshop-public-alb-${var.ENV}"
   description = "roboshop-public-alb-${var.ENV}"
- # vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
   vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
 
   ingress {
@@ -30,7 +29,6 @@ resource "aws_security_group" "alb_public" {
 resource "aws_security_group" "alb_private" {
   name        = "roboshop-private-alb-${var.ENV}"
   description = "roboshop-private-alb-${var.ENV}"
-#  vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
   vpc_id      = data.terraform_remote_state.vpc.outputs.VPC_ID
   ingress {
     description = "Allows http Port"
